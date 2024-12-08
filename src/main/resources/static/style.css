@@ -1,0 +1,18 @@
+@charset "UTF-8";
+.btn-primary {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  border: 2px solid blue;
+  color: white;
+}
+body{
+	
+	background-image: url(https://www.itrobes.com/wp-content/uploads/2024/03/Customer-Management-System-Features.jpg);
+	background-repeat: no-repeat; 
+	background-size: cover;
+	background-attachment: fixed;
+}

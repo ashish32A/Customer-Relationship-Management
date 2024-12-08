@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Clients Manager</title>
+  </head>
+  <body>
+    <div class="container my-4">
+      <h1 class="text-center mb-3">List of Clients</h1>
+      <a class="btn btn-primary" href="/clients/create">New Clients</a>
+    
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Status</th>
+            <th>Created At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        <tr th:each="Client : ${clients}">
+          <td th:text="${Client.id}"></td>
+          <td th:text="${Client.firstName + ' ' + Client.lastName}"></td>
+          <td th:text="${Client.email}"></td>
+          <td th:text="${Client.phone}"></td>
+          <td th:text="${Client.address}"></td>
+          <td th:text="${Client.status}"></td>
+          <td th:text="${Client.createAt != null ? #dates.format(Client.createAt, 'yyyy-MM-dd HH:mm:ss') : 'N/A'}"></td>
+          <td style="white-space:nowrap">
+            <a class="btn btn-primary btn-sm" th:href="@{/clients/edit(id=${Client.id})}">Edit</a>
+            <a class="btn btn-danger btn-sm" th:href="@{/clients/delete(id=${Client.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
